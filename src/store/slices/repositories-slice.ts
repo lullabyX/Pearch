@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type repositoriesStateType = {
   items: {
@@ -15,7 +15,15 @@ export const repositoriesSlice = createSlice({
   name: "repositories",
   initialState: repositoriesInitialState,
   reducers: {
-    update(state, action) {
+    update(
+      state,
+      action: PayloadAction<
+        {
+          name: string;
+          description: string;
+        }[]
+      >
+    ) {
       state.items = action.payload;
     },
   },

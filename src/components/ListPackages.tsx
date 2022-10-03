@@ -9,6 +9,9 @@ const ListPackages: React.FC = () => {
     <div>
       {uiState.isLoading && <h3>Loading...</h3>}
       {uiState.error && <h3>{uiState.error}</h3>}
+      {repositories.length === 0 && !uiState.isLoading && (
+        <h3>No package found.</h3>
+      )}
       <ul>
         {repositories.map((item) => (
           <PackageItem

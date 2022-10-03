@@ -1,9 +1,7 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import {
-  repositoriesActions,
-  repositoriesStateType,
-} from "../slices/repositories-slice";
+import { repositoriesActions } from "../slices/repositories-slice";
+
 import { uiActions } from "../slices/ui-slice";
 
 export const searchRepositories = (text: string) => {
@@ -20,14 +18,14 @@ export const searchRepositories = (text: string) => {
         }
       );
 
-      const repositories: repositoriesStateType = data.objects.map(
-        (object: { package: { name: string; description: string } }) => {
-          return {
-            name: object.package.name,
-            description: object.package.description,
-          };
-        }
-      );
+      const repositories = (
+        data.objects as [{ package: { name: string; description: string } }]
+      ).map((object) => {
+        return {
+          name: object.package.name,
+          description: object.package.description,
+        };
+      });
       return repositories;
     };
 
