@@ -1,7 +1,11 @@
+import ListPackages from "./components/ListPackages";
+import SearchPackages from "./components/SearchPackages";
+
 function App() {
   return (
-    <div >
-      <h1>Hello There</h1>
+    <div>
+      <SearchPackages />
+      <ListPackages />
     </div>
   );
 }
